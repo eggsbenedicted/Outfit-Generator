@@ -52,9 +52,21 @@ function setup() {
   bGallery = new Gallery(createVector(0,0), false);
 }
 
+function drawtGallery(topImageNames, transform) {
+  push();
+  translate(this.position);
+  pop();
+}
+
 function draw() {
   background(220);
   tGallery.displayButtons();
+  if (isTop){
+
+  }
+  drawtGallery();
+  //tGallery.updateGalleryDraft();
+  //bGallery.updateGalleryDraft();
   // tGallery.updatetopGallery()
   // tGallery.displaytopGallery()
 }
