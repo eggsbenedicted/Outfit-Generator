@@ -1,5 +1,5 @@
 var galleries = [];
-var imgLib;
+var imgLibrary;
 
 let generateButton;
 let randomizeButton;
@@ -42,18 +42,17 @@ function GalleryDraft(names){
 
 function preload() {
   // Load Images
-  imgLib = new imageLibrary();
+  imgLibrary = new imageLibrary();
 }
 
 function setup() {
   createCanvas(720, 900); // Create a fixed size canvas 
 
-  // Find on screen positions for top and bottom galleries 
-  //  and replaces 0,0 with them
+  // Create galleries with manually chosen positions
   let tGallery = new Gallery(createVector(330, 200), true);
   let bGallery = new Gallery(createVector(330, 480), false);
 
-  // Put top and bottom gallery into one
+  // Put top and bottom gallery into one array
   galleries = [tGallery, bGallery];
 
   // Create and display button to generate modelled outfit image
@@ -76,6 +75,7 @@ function setup() {
 
 function draw() {
   // Check if generate button has been pressed
+  //  if it has been pressed, do nothing
   if (!isFinished){
     // Light pink colour for background
     background('#ffe6e6');
@@ -123,10 +123,10 @@ function randomize() {
 }
 
 function displayResult() {
-    // draw
+    // draw the model at the center of the canvas
     push();
     imageMode(CENTER);
-    image(imgLib.modelImages[galleries[0].index][galleries[1].index], width / 2, height / 2);
+    image(imgLibrary.modelImages[galleries[0].index][galleries[1].index], width / 2, height / 2);
     pop();
   
     // Create and display button to save the generated modelled outfit
@@ -150,6 +150,6 @@ function formatButton(button) {
 
 function saveImage() {
   // User downloads a png of their generated modelled outfit when they press the save button
-  let imgToSave = get(0, 0, width, height); 
-  imgToSave.save("My outfit", 'png');
+  let img = get(0, 0, width, height); 
+  img.save("My outfit", 'png');
 }

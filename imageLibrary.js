@@ -8,8 +8,6 @@ class imageLibrary {
                                 ["top2-bottom1", "top2-bottom2", "top2-bottom3"],
                                 ["top3-bottom1", "top3-bottom2", "top3-bottom3"]];
 
-        //this.modelImageNames = [["top1-bottom1", "top1-bottom2", "top1-bottom3"]];
-
         this.topImages = [];
         this.bottomImages = [];
         this.modelImages = [];

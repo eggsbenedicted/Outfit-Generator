@@ -1,6 +1,6 @@
 class Gallery {
     constructor(position, isTop){
-        this.isTop = isTop; // Connect the declaring value to a class variable
+        this.isTop = isTop;
         this.index = 0;
         this.position = createVector(position.x, position.y);
 
@@ -17,7 +17,7 @@ class Gallery {
             this.index--;
         }
 
-        // Clamp
+        // Clamp the index
         if (this.index > 2) {
             this.index = 0;
         }
@@ -34,12 +34,12 @@ class Gallery {
         // Make images align with the position from the centre of the image
         imageMode(CENTER);
 
-        // Stamp an image at the (hidden) cursor location
+        // Stamp an image at the cursor position
         if (this.isTop) {
-            image(imgLib.topImages[this.index], 0, 0);
+            image(imgLibrary.topImages[this.index], 0, 0);
         }
         else {
-            image(imgLib.bottomImages[this.index], 0, 0);
+            image(imgLibrary.bottomImages[this.index], 0, 0);
         }
 
         pop();
@@ -59,7 +59,12 @@ class Gallery {
             this.swap(true);
         }
         else {
-            console.log((this.isTop ? "Top gallery" : "Bottom gallery") + ": Click missed");
+            if (this.isTop) {
+                console.log("Top gallery: Click missed");
+            }
+            else  {
+                console.log("Bottom gallery: Click missed");
+            }
         }
     }
 
@@ -71,11 +76,11 @@ class Gallery {
         // Make buttons align with the position from their centre point
         imageMode(CENTER);
 
-        // Left
-        image(imgLib.arrowLeft, -this.buttonOffset, 0, this.buttonSize, this.buttonSize);
+        // Draw left arrow
+        image(imgLibrary.arrowLeft, -this.buttonOffset, 0, this.buttonSize, this.buttonSize);
 
-        // Right
-        image(imgLib.arrowRight, this.buttonOffset, 0, this.buttonSize, this.buttonSize);
+        // Draw right arrow
+        image(imgLibrary.arrowRight, this.buttonOffset, 0, this.buttonSize, this.buttonSize);
         pop();
     }
 }
