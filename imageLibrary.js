@@ -7,8 +7,14 @@ class imageLibrary {
         this.topImages = [];
         this.bottomImages = [];
 
+        // Load top images
         for (var i = 0; i < this.topImageNames.length; i++) {
             this.topImages[i] = loadImage(this.topImageNames[i]);
+        }
+
+        // Load bottom images
+        for (var i = 0; i < this.bottomImageNames.length; i++) {
+            this.bottomImages[i] = loadImage(this.bottomImageNames[i]);
         }
     }
 }

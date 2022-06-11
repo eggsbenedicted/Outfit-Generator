@@ -1,5 +1,6 @@
 class Gallery {
     constructor(position, isTop){
+        this.isTop = isTop; // Connect the declaring value to a class variable
         this.index = 0;
         this.position = createVector(position.x, position.y);
     }
@@ -14,14 +15,20 @@ class Gallery {
     }
 
     display(){
-        imgLib.topImages[0];
+        // Move the cursor into location
+        push();
+        translate(this.position.x, this.position.y); 
 
-        if (isTop) {
-            image(imgLib.topImages[this.index]);
+        // Stamp an image at the (hidden) cursor location
+        if (this.isTop) {
+            image(imgLib.topImages[this.index], 0, 0);
         }
         else {
-            image(imgLib.bottomImages[this.index]);
+            image(imgLib.bottomImages[this.index], 0, 0);
         }
+
+        // Also display buttons on both sides of the gallery
+        this.displayButtons();
     }
 
     putInMousePressed() {
@@ -34,7 +41,7 @@ class Gallery {
             swap(true);
         }
 
-        console.log("Click missed");
+        console.log(this.isTop ? "Top gallery" : "Bottom gallery" + "Click missed");
     }
 
     displayButtons(){
@@ -42,18 +49,18 @@ class Gallery {
 
         // move into position
         push();
-        translate(-this.index, 0);
+        // translate(-this.index, 0);
         fill(150);
         noStroke();
 
         // draw main left/right arrows
-        // todo change to be dependent on this.position
+        //  todo change to be dependent on this.position
         triangle(width/4, height/7 * 6, width/4 + 50, height/7 * 6 + 25, width/4 + 50, height/7 * 6 - 25);
         triangle(width/4 * 3, height/7 * 6, width/4 * 3- 50, height/7 * 6 + 25, width/4 * 3 - 50, height/7 * 6 - 25);
         fill(150);
         
         // draw little dots
         
-        pop()
+        pop();
     }
 }
