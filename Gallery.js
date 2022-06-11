@@ -9,6 +9,7 @@ class Gallery {
     }
 
     swap(isPositive){
+        // Change gallery pieces based on if user presses left or right arrow
         if (isPositive) {
             this.index++;
         }
@@ -30,7 +31,7 @@ class Gallery {
         push();
         translate(this.position.x, this.position.y); 
 
-        //
+        // Make images align with the position from the centre of the image
         imageMode(CENTER);
 
         // Stamp an image at the (hidden) cursor location
@@ -48,7 +49,7 @@ class Gallery {
     }
 
     putInMousePressed() {
-        // 
+        // Tell the program where the arrows are to know when they are clicked
         if (int(dist(mouseX,mouseY, this.position.x - this.buttonOffset, this.position.y)) < this.buttonSize) {
             // console.log("Swap left");
             this.swap(false);
@@ -63,11 +64,11 @@ class Gallery {
     }
 
     displayButtons(){
-        // move into position
+        // Move into position
         push();
         translate(this.position.x, this.position.y);
 
-        // 
+        // Make buttons align with the position from their centre point
         imageMode(CENTER);
 
         // Left

@@ -1,6 +1,7 @@
 
 class imageLibrary {
     constructor() {
+        // Locate the image files and create arrays
         this.topImageNames = ["data/tops/top1.png", "data/tops/top2.png", "data/tops/top3.png"];
         this.bottomImageNames = ["data/bottoms/bottom1.png", "data/bottoms/bottom2.png", "data/bottoms/bottom3.png"];
         this.modelImageNames = [["top1-bottom1", "top1-bottom2", "top1-bottom3"], 
@@ -25,7 +26,7 @@ class imageLibrary {
             this.bottomImages[i] = loadImage(this.bottomImageNames[i]);
         }
 
-        // 
+        // Load in the modelled outfit that correlates with the gallery pieces selected
         console.log(this.modelImageNames[0][1]);
         this.modelImages.push([loadImage("data/model/" + this.modelImageNames[0][0] + ".png"), 
                                loadImage("data/model/" + this.modelImageNames[0][1] + ".png"),
